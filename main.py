@@ -15,4 +15,5 @@ if __name__ == '__main__':
 	UIFileLoader = QUiLoader()
 	MainGUI = UIFileLoader.load("MainForm.ui");
 	MainGUI.show()
+
 	sys.exit(app.exec_())
