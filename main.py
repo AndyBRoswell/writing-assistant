@@ -17,7 +17,7 @@ def slot():
 	print("Slot function has been called.")
 
 
-class Action:
+class Action(QObject):
 	signal = Signal(int, str)
 
 
@@ -26,4 +26,5 @@ if __name__ == '__main__':
 	gui = MainWindow()
 	action = Action()
 	action.signal.connect(slot)
+	action.signal.emit(1, "a")
 	sys.exit(app.exec_())
