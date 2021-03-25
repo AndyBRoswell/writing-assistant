@@ -1,19 +1,17 @@
 import sys
-import os
 
 from PySide2.QtWidgets import QApplication, QMainWindow
-from PySide2.QtUiTools import QUiLoader
+from Ui_MainWindow import Ui_MainWindow
 
 
-class MainForm(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
 	def __init__(self):
-		super(MainForm, self).__init__()
+		super(MainWindow, self).__init__()
+		self.setupUi(self)
+		self.show()
 
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
-	UIFileLoader = QUiLoader()
-	MainGUI = UIFileLoader.load("MainForm.ui");
-	MainGUI.show()
-
+	gui = MainWindow()
 	sys.exit(app.exec_())
