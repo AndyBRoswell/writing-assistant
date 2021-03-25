@@ -12,17 +12,11 @@ class MainWindow(Ui_MainWindow):
 		self.show()
 
 
-# @Slot(int, str)
-def slot():
-	print("Slot function has been called.")
-	# gui.textEdit.setText(identifier + ', ' + prompt)
-
-
 app = None
 gui = None
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	gui = MainWindow()
-	gui.pushButton.clicked.connect(slot)
+
 	sys.exit(app.exec_())
