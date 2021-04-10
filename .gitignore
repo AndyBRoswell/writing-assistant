@@ -44,3 +44,5 @@ CMakeLists.txt.user*
 
 # PyQt
 venv/
+
+__pycache__/
