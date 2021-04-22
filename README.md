@@ -1,2 +1,5 @@
 # writing-assistant
- An auxiliary tool for writing literary works
+
+Project Nunotaba: Writing Assistant
+
+ An auxiliary tool for writing literary works.
