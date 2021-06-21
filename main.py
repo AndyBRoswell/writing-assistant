@@ -1,3 +1,4 @@
+import globals
 import sys
 
 from PySide2.QtWidgets import QApplication, QMainWindow
@@ -18,5 +19,7 @@ gui = None
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	gui = MainWindow()
+
+	print(globals.app_path)
 
 	sys.exit(app.exec_())
