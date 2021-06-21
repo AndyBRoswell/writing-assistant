@@ -20,6 +20,6 @@ if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	gui = MainWindow()
 
-	print(globals.app_path)
+
 
 	sys.exit(app.exec_())
