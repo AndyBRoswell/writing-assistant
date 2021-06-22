@@ -1,3 +1,4 @@
+import csv
 import globals
 import lexical
 import semantic
