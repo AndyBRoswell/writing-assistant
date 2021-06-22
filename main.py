@@ -58,7 +58,14 @@ if __name__ == '__main__':
 			# word seg
 			print(globals.linesep + "================ Word Seg ================" + globals.linesep)
 			print(lexical.tokenize(''.join(row)))
-			# 
+			# entity recognition
+			
+			# extract / generate keywords
+			
+			# extract / generate summary
+			
+			# sentimental analysis
+			
 	
 	# END CSV TEST
 	
