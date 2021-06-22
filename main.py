@@ -1,4 +1,5 @@
 import globals
+import lexical
 import sys
 
 from PySide2.QtWidgets import QApplication, QMainWindow
@@ -20,6 +21,7 @@ if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	gui = MainWindow()
 
-
+	print(lexical.get_synonyms("美丽", 32))
+	print(lexical.get_synonyms("帅", 32))
 
 	sys.exit(app.exec_())
