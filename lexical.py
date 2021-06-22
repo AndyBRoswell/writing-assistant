@@ -4,7 +4,7 @@ import synonyms
 import textrank4zh
 
 
-def get_synonyms(word, count = 1):
+def get_synonyms(word, count = 16):
 	return synonyms.nearby(word, count)[0]
 
 
