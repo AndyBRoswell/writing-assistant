@@ -1,9 +1,13 @@
+import jiagu
+import jionlp
 import synonyms
+import textrank4zh
 
 
 def get_synonyms(word, count = 1):
-	return synonyms.nearby(word, count)
+	return synonyms.nearby(word, count)[0]
 
 
 def tokenize(text):
-	return synonyms.seg(text)
+	# return synonyms.seg(text)[0]
+	return jiagu.seg(text)
