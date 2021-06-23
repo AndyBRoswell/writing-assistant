@@ -65,9 +65,9 @@ if __name__ == '__main__':
 			print(globals.linesep + "================ Word Seg ================" + globals.linesep)
 			print("jiagu:")
 			words = jiagu.seg(text)
-			print(words)
+			print('/'.join(words))
 			print("synonyms:")
-			print(synonyms.seg(text))
+			print('/'.join(synonyms.seg(text)))
 			
 			# entity recognition
 			print(globals.linesep + "================ Entity Recognition ================" + globals.linesep)
