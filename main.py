@@ -1,4 +1,5 @@
 import csv
+import json
 
 import jiagu
 import jionlp
@@ -49,18 +50,22 @@ if __name__ == '__main__':
 	print("globals.linesep + ================ End Synonyms ================" + globals.linesep)
 	
 	with open("paragraphs.csv") as paragraphs_file:
+		entity_list = json.loads("entity-list.json")
 		rows = csv.reader(paragraphs_file)
 		for row in rows:
+			text = ''.join(row)
 			# word seg
 			print(globals.linesep + "================ Word Seg ================" + globals.linesep)
-			text = ''.join(row)
 			print(synonyms.seg(text))
 			print(jiagu.seg(text))
 			# entity recognition
 			print(globals.linesep + "================ Entity Recognition ================" + globals.linesep)
 			print(jiagu.ner(''.join(row)))
-			
+			entity_recognizer = jionlp.ner.LexiconNER(entity_list)
+			print(entity_recognizer(text))
 			# extract / generate keywords
+			print(globals.linesep + "================ Keywords ================" + globals.linesep)
+			print(synonyms.keywords(text))
 			
 			# extract / generate summary
 			
