@@ -45,7 +45,7 @@ if __name__ == '__main__':
 	print(globals.linesep + "================ Synonyms ================" + globals.linesep)
 	with open("synonyms.csv") as synonyms_file:
 		rows = csv.reader(synonyms_file)
-		print("synonyms:")
+		print(globals.linesep + "synonyms:")
 		for row in rows:
 			print(synonyms.nearby(''.join(row), 16))
 	print(globals.linesep + "================ End Synonyms ================" + globals.linesep)
@@ -63,51 +63,54 @@ if __name__ == '__main__':
 			
 			# word seg
 			print(globals.linesep + "================ Word Seg ================" + globals.linesep)
-			print("jiagu:")
-			words = jiagu.seg(text)
-			print('/'.join(words))
-			print("synonyms:")
-			print('/'.join(synonyms.seg(text)))
+			print(globals.linesep + "jiagu:")
+			words_for_jiagu = jiagu.seg(text)
+			print('/'.join(words_for_jiagu))
+			print(globals.linesep + "synonyms:")
+			words_for_synonyms = synonyms.seg(text)[0]
+			print('/'.join(words_for_synonyms))
 			
 			# entity recognition
 			print(globals.linesep + "================ Entity Recognition ================" + globals.linesep)
-			print("jiagu:")
-			print(jiagu.ner(words))
-			print("jionlp:")
+			print(globals.linesep + "jiagu:")
+			print('/'.join(jiagu.ner(words_for_jiagu)))
+			print(globals.linesep + "jionlp:")
 
 			print(jio_entity_recognizer(text))
 			
 			# extract / generate keywords
 			print(globals.linesep + "================ Keywords ================" + globals.linesep)
-			keyword_count = 16
-			print("jiagu:")
-			print(jiagu.keywords(text, keyword_count))
-			print("synonyms:")
-			print(synonyms.keywords(text, keyword_count))
-			print("textrank4zh:")
+			keyword_count = 10
+			print(globals.linesep + "jiagu:")
+			print('；'.join(jiagu.keywords(text, keyword_count)))
+			print(globals.linesep + "synonyms:")
+			print('；'.join(synonyms.keywords(text, keyword_count)))
+			print(globals.linesep + "textrank4zh:")
 			tr4w.analyze(text = text)
 			tr4w_keywords = tr4w.get_keywords(keyword_count)
 			for word_item in tr4w_keywords:
 				print(word_item.word, end = "；")
+			print(globals.linesep)
 			
 			# extract / generate summary
 			print(globals.linesep + "================ Summaries ================" + globals.linesep)
-			print("jiagu:")
-			print(jiagu.summarize(text, 2))
-			print("jionlp:")
+			print(globals.linesep + "jiagu:")
+			print(globals.linesep.join(jiagu.summarize(text, 2)))
+			print(globals.linesep + "jionlp:")
 			print(jionlp.summary.extract_summary(text))
-			print("textrank4zh:")
+			print(globals.linesep + "textrank4zh:")
 			tr4s.analyze(text)
 			tr4s_summaries = tr4s.get_key_sentences(2)
 			for sentence_item in tr4s_summaries:
 				print(sentence_item.sentence)
 			
 			# sentimental analysis
-			print("jiagu:")
+			print(globals.linesep + "================ Sentimental Analysis ================" + globals.linesep)
+			print(globals.linesep + "jiagu:")
 			print(jiagu.sentiment(text))
-			print("jionlp:")
+			print(globals.linesep + "jionlp:")
 			jio_sentiment_analyzer = jionlp.sentiment.LexiconSentiment()
-			print(jio_sentiment_analyzer(text))
+			print(jio_sentiment_analyzer(text), sep = globals.linesep)
 	
 	print(globals.linesep + "================ End Lexical & Semantic ================" + globals.linesep)
 	
