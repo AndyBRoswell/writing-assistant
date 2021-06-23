@@ -80,6 +80,12 @@ if __name__ == '__main__':
 			print(jiagu.keywords(text, keyword_count))
 			print("synonyms:" + globals.linesep)
 			print(synonyms.keywords(text, keyword_count))
+			print("textrank4zh:" + globals.linesep)
+			tr4w = textrank4zh.TextRank4Keyword()
+			tr4w.analyze(text = text)
+			tr4w_keywords = tr4w.get_keywords(keyword_count)
+			for word_item in tr4w_keywords:
+				print(word_item.word)
 			
 			# extract / generate summary
 			print(globals.linesep + "================ Summaries ================" + globals.linesep)
@@ -87,9 +93,20 @@ if __name__ == '__main__':
 			print(jiagu.summarize(text))
 			print("jionlp:" + globals.linesep)
 			print(jionlp.summary.extract_summary(text))
+			print("textrank4zh:" + globals.linesep)
+			tr4s = textrank4zh.TextRank4Sentence()
+			tr4s_summaries = tr4s.get_key_sentences()
+			for sentence_item in tr4s_summaries:
+				print(sentence_item.sentence)
 			
 			# sentimental analysis
-			
+			print("jiagu:" + globals.linesep)
+			print(jiagu.sentiment(text))
+			print("jionlp:" + globals.linesep)
+			jio_sentiment_analyzer = jionlp.sentiment.LexiconSentiment()
+			print(jio_sentiment_analyzer(text))
+	
+	print(globals.linesep + "================ End Lexical & Semantic ================" + globals.linesep)
 	
 	# END CSV TEST
 	
