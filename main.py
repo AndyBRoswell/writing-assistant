@@ -88,17 +88,17 @@ if __name__ == '__main__':
 			tr4w.analyze(text = text)
 			tr4w_keywords = tr4w.get_keywords(keyword_count)
 			for word_item in tr4w_keywords:
-				print(word_item.word)
+				print(word_item.word, sep = "；")
 			
 			# extract / generate summary
 			print(globals.linesep + "================ Summaries ================" + globals.linesep)
 			print("jiagu:")
-			print(jiagu.summarize(text, 3))
+			print(jiagu.summarize(text, 2))
 			print("jionlp:")
 			print(jionlp.summary.extract_summary(text))
 			print("textrank4zh:")
 			tr4s.analyze(text)
-			tr4s_summaries = tr4s.get_key_sentences()
+			tr4s_summaries = tr4s.get_key_sentences(2)
 			for sentence_item in tr4s_summaries:
 				print(sentence_item.sentence)
 			
