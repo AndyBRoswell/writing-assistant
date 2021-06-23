@@ -53,6 +53,9 @@ if __name__ == '__main__':
 	print(globals.linesep + "================ Lexical & Semantic ================" + globals.linesep)
 	with open("paragraphs.csv") as paragraphs_file:
 		entity_list = json.loads("entity-list.json")
+		jio_entity_recognizer = jionlp.ner.LexiconNER(entity_list)
+		tr4w = textrank4zh.TextRank4Keyword()
+		tr4s = textrank4zh.TextRank4Sentence()
 		rows = csv.reader(paragraphs_file)
 		for row in rows:
 			text = ''.join(row)
@@ -70,8 +73,8 @@ if __name__ == '__main__':
 			print("jiagu:" + globals.linesep)
 			print(jiagu.ner(''.join(row)))
 			print("jionlp:" + globals.linesep)
-			entity_recognizer = jionlp.ner.LexiconNER(entity_list)
-			print(entity_recognizer(text))
+
+			print(jio_entity_recognizer(text))
 			
 			# extract / generate keywords
 			print(globals.linesep + "================ Keywords ================" + globals.linesep)
@@ -81,7 +84,6 @@ if __name__ == '__main__':
 			print("synonyms:" + globals.linesep)
 			print(synonyms.keywords(text, keyword_count))
 			print("textrank4zh:" + globals.linesep)
-			tr4w = textrank4zh.TextRank4Keyword()
 			tr4w.analyze(text = text)
 			tr4w_keywords = tr4w.get_keywords(keyword_count)
 			for word_item in tr4w_keywords:
@@ -94,7 +96,7 @@ if __name__ == '__main__':
 			print("jionlp:" + globals.linesep)
 			print(jionlp.summary.extract_summary(text))
 			print("textrank4zh:" + globals.linesep)
-			tr4s = textrank4zh.TextRank4Sentence()
+			tr4s.analyze(text)
 			tr4s_summaries = tr4s.get_key_sentences()
 			for sentence_item in tr4s_summaries:
 				print(sentence_item.sentence)
