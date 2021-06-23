@@ -51,8 +51,8 @@ if __name__ == '__main__':
 	print(globals.linesep + "================ End Synonyms ================" + globals.linesep)
 	
 	print(globals.linesep + "================ Lexical & Semantic ================" + globals.linesep)
-	with open("paragraphs.csv") as paragraphs_file:
-		entity_list = json.loads("entity-list.json")
+	with open("paragraphs.csv") as paragraphs_file, open("entity-list.json", encoding = "utf-8") as entity_list_file:
+		entity_list = json.load(entity_list_file)
 		jio_entity_recognizer = jionlp.ner.LexiconNER(entity_list)
 		tr4w = textrank4zh.TextRank4Keyword()
 		tr4s = textrank4zh.TextRank4Sentence()
@@ -64,14 +64,15 @@ if __name__ == '__main__':
 			# word seg
 			print(globals.linesep + "================ Word Seg ================" + globals.linesep)
 			print("jiagu:" + globals.linesep)
-			print(jiagu.seg(text))
+			words = jiagu.seg(text)
+			print(words)
 			print("synonyms:" + globals.linesep)
 			print(synonyms.seg(text))
 			
 			# entity recognition
 			print(globals.linesep + "================ Entity Recognition ================" + globals.linesep)
 			print("jiagu:" + globals.linesep)
-			print(jiagu.ner(''.join(row)))
+			print(jiagu.ner(words))
 			print("jionlp:" + globals.linesep)
 
 			print(jio_entity_recognizer(text))
@@ -92,7 +93,7 @@ if __name__ == '__main__':
 			# extract / generate summary
 			print(globals.linesep + "================ Summaries ================" + globals.linesep)
 			print("jiagu:" + globals.linesep)
-			print(jiagu.summarize(text))
+			print(jiagu.summarize(text, 3))
 			print("jionlp:" + globals.linesep)
 			print(jionlp.summary.extract_summary(text))
 			print("textrank4zh:" + globals.linesep)
