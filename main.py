@@ -59,7 +59,7 @@ if __name__ == '__main__':
 		rows = csv.reader(paragraphs_file)
 		for row in rows:
 			text = ''.join(row)
-			print("text: " + globals.linesep + text)
+			print(globals.linesep + "text: " + globals.linesep + text)
 			
 			# word seg
 			print(globals.linesep + "================ Word Seg ================" + globals.linesep)
@@ -88,7 +88,7 @@ if __name__ == '__main__':
 			tr4w.analyze(text = text)
 			tr4w_keywords = tr4w.get_keywords(keyword_count)
 			for word_item in tr4w_keywords:
-				print(word_item.word, sep = "；")
+				print(word_item.word, end = "；")
 			
 			# extract / generate summary
 			print(globals.linesep + "================ Summaries ================" + globals.linesep)
