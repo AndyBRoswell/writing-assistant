@@ -47,7 +47,7 @@ if __name__ == '__main__':
 		rows = csv.reader(synonyms_file)
 		print(globals.linesep + "synonyms:")
 		for row in rows:
-			print('、'.join(synonyms.nearby(''.join(row), 16)[0]))
+			print('、'.join(synonyms.nearby(''.join(row), 20)[0]))
 	print(globals.linesep + "================ End Synonyms ================" + globals.linesep)
 	
 	print(globals.linesep + "================ Lexical & Semantic ================" + globals.linesep)
