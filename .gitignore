@@ -43,6 +43,6 @@ target_wrapper.*
 CMakeLists.txt.user*
 
 # PyQt
-venv/
+/venv
 
 __pycache__/
