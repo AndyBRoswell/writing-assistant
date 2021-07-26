@@ -31,6 +31,6 @@ if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	gui = MainWindow()
 
-	testcode.run_test()
+	# testcode.run_test()
 	
 	sys.exit(app.exec_())
