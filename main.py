@@ -2,11 +2,6 @@ import csv
 import json
 import sys
 
-import jiagu
-import jionlp
-import synonyms
-import textrank4zh
-
 import globals
 import lexical
 import semantic
