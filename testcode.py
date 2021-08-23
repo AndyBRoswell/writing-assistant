@@ -1,3 +1,14 @@
+import csv
+import json
+
+import jiagu
+import jionlp
+import synonyms
+import textrank4zh
+
+import globals
+
+
 def run_test():
 	# ADD TEST CODE
 	
@@ -88,7 +99,7 @@ def run_test():
 			print(jio_sentiment_analyzer(text), sep = globals.linesep)
 	
 	print(globals.linesep + "================ End Lexical & Semantic ================" + globals.linesep)
-	
-	# END CSV TEST
-	
-	# END TEST CODE
+
+# END CSV TEST
+
+# END TEST CODE
