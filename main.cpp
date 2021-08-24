@@ -1,5 +1,3 @@
-#include <semaphore>
-
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
