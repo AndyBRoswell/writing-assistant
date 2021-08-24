@@ -6,7 +6,6 @@ import QtQuick.Window 2.15
 
 ApplicationWindow {
 	visible: true
-
 	visibility: "Maximized"
 	title: qsTr("写作助手")
 	
@@ -28,9 +27,7 @@ ApplicationWindow {
 	
 	TabBar {
 		id: tabMain
-		
 		property int dwTabButtonNum: 4
-		
 		width: parent.width
 		
 		TabButton {
@@ -53,19 +50,33 @@ ApplicationWindow {
 	
 	StackLayout {
 		width: parent.width
+		height: parent.height - tabMain.bottom
 		currentIndex: tabMain.currentIndex
+		//currentIndex: 1
 		
-		Item {
+		Rectangle {
 			id: tabLexica
+			width: parent.width
+			height: parent.height
+			color: "red"
 		}
-		Item {
+		Rectangle {
 			id: tabExcerpts
+			width: parent.width
+			height: parent.height
+			color: "green"
 		}
-		Item {
+		Rectangle {
 			id: tabWritingHints
+			width: parent.width
+			height: parent.height
+			color: "blue"
 		}
-		Item {
+		Rectangle {
 			id: tabBackupAndRestore
+			width: parent.width
+			height: parent.height
+			color: "black"
 		}
 	}
 }
