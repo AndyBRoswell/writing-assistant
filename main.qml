@@ -26,12 +26,28 @@ ApplicationWindow {
 	}
 	
 	TabBar {
+		property int dwTabButtonNum: 4
+		
 		width: parent.width
 		
-		Repeater {
-			model: [qsTr(""), qsTr(""), qsTr("")]
-			
-			
+		TabButton {
+			text: qsTr("词库")
+			width: Math.min(64, parent.width / parent.dwTabButtonNum)
+		}
+		
+		TabButton {
+			text: qsTr("摘抄管理")
+			width: Math.min(64, parent.width / parent.dwTabButtonNum)
+		}
+		
+		TabButton {
+			text: qsTr("写作提示")
+			width: Math.min(64, parent.width / parent.dwTabButtonNum)
+		}
+		
+		TabButton {
+			text: qsTr("备份恢复")
+			width: Math.min(64, parent.width / parent.dwTabButtonNum)
 		}
 	}
 }
