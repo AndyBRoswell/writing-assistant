@@ -11,25 +11,25 @@ int main(int argc, char *argv[]) {
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 	
-	QGuiApplication app(argc, argv);
+	QGuiApplication App(argc, argv);
 	
-	QTranslator translator;
-	const QStringList uiLanguages = QLocale::system().uiLanguages();
-	for (const QString &locale : uiLanguages) {
-		const QString baseName = "writing-assistant_" + QLocale(locale).name();
-		if (translator.load(":/i18n/" + baseName)) {
-			app.installTranslator(&translator);
+	QTranslator Translator;
+	const QStringList UILanguages = QLocale::system().uiLanguages();
+	for (const QString& Locale : UILanguages) {
+		const QString BaseName = "writing-assistant_" + QLocale(Locale).name();
+		if (Translator.load(":/i18n/" + BaseName)) {
+			App.installTranslator(&Translator);
 			break;
 		}
 	}
 	
-	QQmlApplicationEngine engine;
-	const QUrl url(QStringLiteral("qrc:/main.qml"));
-	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app,
-					 [url](QObject *obj, const QUrl &objUrl) {
-		if (!obj && url == objUrl) QCoreApplication::exit(-1);
+	QQmlApplicationEngine Engine;
+	const QUrl URL(QStringLiteral("qrc:/main.qml"));
+	QObject::connect(&Engine, &QQmlApplicationEngine::objectCreated, &App,
+					 [URL](QObject *Obj, const QUrl &ObjURL) {
+		if (!Obj && URL == ObjURL) QCoreApplication::exit(-1);
 	}, Qt::QueuedConnection);
-	engine.load(url);
+	Engine.load(URL);
 	
-	return app.exec();
+	return App.exec();
 }
