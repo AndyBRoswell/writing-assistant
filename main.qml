@@ -68,7 +68,11 @@ ApplicationWindow {
 						width: parent.width
 						placeholderText: qsTr("搜索词典名称")
 					}
-					
+					TextArea {
+						y: tfDictName.height
+						width: parent.width
+						height: parent.height - tfDictName.height
+					}
 				}
 				Item {
 					SplitView.preferredWidth: parent.width * 3 / 4
@@ -80,15 +84,22 @@ ApplicationWindow {
 					}
 					SplitView {
 						orientation: Qt.Vertical
-						anchors.fill: parent
-						//y: tfKeyword.height
-						//height: parent.height - tfKeyword.height
+						anchors.top: tfKeyword.bottom
+						anchors.bottom: parent.bottom
+						anchors.left: parent.left
+						anchors.right: parent.right
 						
 						Item {
-							SplitView.preferredWidth: parent.width * 1 / 2
+							SplitView.preferredHeight: parent.height * 1 / 2
+							TextArea {
+								anchors.fill: parent
+							}
 						}
 						Item {
-							SplitView.preferredWidth: parent.width * 1 / 2
+							SplitView.preferredHeight: parent.height * 1 / 2
+							TextArea {
+								anchors.fill: parent
+							}
 						}
 					}
 				}
