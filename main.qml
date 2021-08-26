@@ -54,29 +54,37 @@ ApplicationWindow {
 		currentIndex: tabMain.currentIndex
 		//currentIndex: 1
 		
-		Rectangle {
+		Item {
 			id: tabLexica
 			width: parent.width
 			height: parent.height
-			color: "red"
+			Text {
+				text: "Lexica"
+			}
 		}
-		Rectangle {
+		Item {
 			id: tabExcerpts
 			width: parent.width
 			height: parent.height
-			color: "green"
+			Text {
+				text: "Excerpts"
+			}
 		}
-		Rectangle {
+		Item {
 			id: tabWritingHints
 			width: parent.width
 			height: parent.height
-			color: "blue"
+			Text {
+				text: "WritingHints"
+			}
 		}
-		Rectangle {
+		Item {
 			id: tabBackupAndRestore
 			width: parent.width
 			height: parent.height
-			color: "black"
+			Text {
+				text: "BackupAndRestore"
+			}
 		}
 	}
 }
