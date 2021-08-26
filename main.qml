@@ -50,9 +50,9 @@ ApplicationWindow {
 	
 	StackLayout {
 		width: parent.width
+		y: tabMain.height
 		height: parent.height - tabMain.bottom
 		currentIndex: tabMain.currentIndex
-		//currentIndex: 1
 		
 		Item {
 			id: tabLexica
