@@ -66,7 +66,7 @@ ApplicationWindow {
 					TextField {
 						id: tfDictName
 						width: parent.width
-						placeholderText: qsTr("搜索词典名称")
+						placeholderText: qsTr("搜索：词典名称")
 					}
 					TextArea {
 						y: tfDictName.height
@@ -75,12 +75,10 @@ ApplicationWindow {
 					}
 				}
 				Item {
-					SplitView.preferredWidth: parent.width * 3 / 4
-					
 					TextField {
 						id: tfKeyword
 						width: parent.width
-						placeholderText: qsTr("输入要查询的词语、短语或句子")
+						placeholderText: qsTr("输入：要查询的词语、短语或句子")
 					}
 					SplitView {
 						orientation: Qt.Vertical
@@ -96,9 +94,32 @@ ApplicationWindow {
 							}
 						}
 						Item {
-							SplitView.preferredHeight: parent.height * 1 / 2
-							TextArea {
+							SplitView {
 								anchors.fill: parent
+								
+								Item {
+									SplitView.preferredWidth: parent.width * 1 / 8
+									
+									ListModel {
+										id: lmLibs
+										ListElement {
+											name: "synonyms"
+										}
+									}
+									ListView {
+										anchors.fill: parent
+										model: lmLibs
+										delegate: Row {
+											CheckBox { checked: true }
+											Text { text: name }
+										}
+									}
+								}
+								Item {
+									TextArea {
+										anchors.fill: parent
+									}
+								}
 							}
 						}
 					}
