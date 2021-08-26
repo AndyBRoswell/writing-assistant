@@ -8,7 +8,6 @@ ApplicationWindow {
 	visible: true
 	visibility: "Maximized"
 	title: qsTr("写作助手")
-	
 	menuBar: MenuBar {
 		Menu {
 			title: qsTr("文件")
@@ -47,25 +46,33 @@ ApplicationWindow {
 			width: Math.min(64, parent.width / parent.dwTabButtonNum)
 		}
 	}
-	
 	StackLayout {
 		width: parent.width
 		y: tabMain.height
-		height: parent.height - tabMain.bottom
+		height: parent.height - tabMain.height
 		currentIndex: tabMain.currentIndex
 		
 		Item {
 			id: tabLexica
 			width: parent.width
 			height: parent.height
-			Text {
-				text: "Lexica"
+			
+			SplitView {
+				anchors.fill: parent
+				
+				Item {
+					SplitView.preferredWidth: parent.width * 1 / 4
+				}
+				Item {
+					SplitView.preferredWidth: parent.width * 3 / 4
+				}
 			}
 		}
 		Item {
 			id: tabExcerpts
 			width: parent.width
 			height: parent.height
+			
 			Text {
 				text: "Excerpts"
 			}
@@ -74,6 +81,7 @@ ApplicationWindow {
 			id: tabWritingHints
 			width: parent.width
 			height: parent.height
+			
 			Text {
 				text: "WritingHints"
 			}
@@ -82,6 +90,7 @@ ApplicationWindow {
 			id: tabBackupAndRestore
 			width: parent.width
 			height: parent.height
+			
 			Text {
 				text: "BackupAndRestore"
 			}
