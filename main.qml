@@ -62,9 +62,35 @@ ApplicationWindow {
 				
 				Item {
 					SplitView.preferredWidth: parent.width * 1 / 4
+					
+					TextField {
+						id: tfDictName
+						width: parent.width
+						placeholderText: qsTr("搜索词典名称")
+					}
+					
 				}
 				Item {
 					SplitView.preferredWidth: parent.width * 3 / 4
+					
+					TextField {
+						id: tfKeyword
+						width: parent.width
+						placeholderText: qsTr("输入要查询的词语、短语或句子")
+					}
+					SplitView {
+						orientation: Qt.Vertical
+						anchors.fill: parent
+						//y: tfKeyword.height
+						//height: parent.height - tfKeyword.height
+						
+						Item {
+							SplitView.preferredWidth: parent.width * 1 / 2
+						}
+						Item {
+							SplitView.preferredWidth: parent.width * 1 / 2
+						}
+					}
 				}
 			}
 		}
